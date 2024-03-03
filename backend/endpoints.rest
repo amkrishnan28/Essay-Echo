@@ -1,0 +1,20 @@
+### Get new User
+GET /get-users HTTP/1.1
+Host: localhost:8000
+
+
+### Add new User
+POST /add-user HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "username": "pravirs4",
+    "password": "testpwd",
+    "name": "Pravir",
+    "essayPrompts": []
+}
+
+### Delete all Users
+DELETE /delete-users HTTP/1.1
+Host: localhost:8000
