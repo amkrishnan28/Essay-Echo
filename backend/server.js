@@ -123,6 +123,6 @@ app.post('/user/add-prompt', async (req, res) => {
 
         res.status(200).json({ message: 'Prompt added successfully', user: updatedUser });
     } catch (error) {
-        res.status(500).json({ message: 'Error adding prompt to user', error: error.message });
+        res.status(500).json({ message: 'Error adding prompt to user in database', error: error.message });
     }
 });
