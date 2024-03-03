@@ -1,6 +1,15 @@
-### Get new User
+### Get User
 GET /get-users HTTP/1.1
 Host: localhost:8000
+
+### Get User by Username
+POST /get-user HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "username": "pravirsecond"
+}
 
 
 ### Add new User
@@ -9,8 +18,8 @@ Host: localhost:8000
 Content-Type: application/json
 
 {
-    "username": "pravirs4",
-    "password": "testpwd",
+    "username": "pravirsecond",
+    "password": "password2",
     "name": "Pravir",
     "essayPrompts": []
 }
@@ -18,3 +27,14 @@ Content-Type: application/json
 ### Delete all Users
 DELETE /delete-users HTTP/1.1
 Host: localhost:8000
+
+### Add new Prompt
+POST /user/add-prompt HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "username": "pravirsecond",
+    "prompt": "What is your greatest weakness?",
+    "college": "UCLA"
+}

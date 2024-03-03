@@ -9,6 +9,10 @@ const promptSchema = new Schema({
     college: {
         type: String,
         required: true
+    },
+    username: {
+        type: String,
+        required: true
     }
 }, {timestamps: true}
 )

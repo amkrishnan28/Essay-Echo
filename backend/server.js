@@ -79,6 +79,16 @@ app.get('/get-users', async (req, res) => {
     }
 });
 
+app.post('/get-user', async(req, res) => {
+    const userFound = await User.findOne({username: req.body.username});
+    if(userFound){
+        res.send(userFound);
+    }
+    else{
+        console.log('User not found');
+    }
+});
+
 app.delete('/delete-users', async (req,res) =>{
 
     try {
@@ -89,3 +99,30 @@ app.delete('/delete-users', async (req,res) =>{
     }
 
 })
+
+
+app.post('/user/add-prompt', async (req, res) => {
+    const { prompt, college, username } = req.body;
+
+    try {
+        const newPrompt = new Prompt({
+            prompt,
+            college,
+            username
+        });     
+        const savedPrompt = await newPrompt.save();   
+        const updatedUser = await User.findOneAndUpdate(
+            { username: username },
+            { $push: { essayPrompts: savedPrompt._id } },
+            { new: true }
+        ).populate('essayPrompts');
+
+        if (!updatedUser) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+
+        res.status(200).json({ message: 'Prompt added successfully', user: updatedUser });
+    } catch (error) {
+        res.status(500).json({ message: 'Error adding prompt to user', error: error.message });
+    }
+});
