@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Prompt = require("./models/Prompt.js")
+const Prompt = require("./Prompt.js")
 
 const userSchema = new Schema({
     username: {
