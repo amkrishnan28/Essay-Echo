@@ -71,19 +71,23 @@
 .box input[type = "submit"]:hover {
   background: #2ecc71
 }
-#about {
-  position: absolute;
-  bottom: 15px; 
-  left: 50px;
-  width: 100%; 
+
+
+#about-link {
+  
+  color: blue; 
+  text-decoration: underline; 
+  font-weight: bold;
+  font-size: 36px;
+  margin-top: 10px; 
+  position: absolute; /* Position the link absolutely */
+  bottom: 135px; /* Position the link 15 pixels from the bottom */
+  left: 900px; /* Position the link 50 pixels from the left */
   text-align: center;
-  ;
+  
 }
 
 #about-text {
-  position: absolute;
-  bottom: -150px; 
-  left: 50px;
-  width: 100%; 
-  text-align: center;
+  margin-top: 700px;
+  font-size: 24px;
 }
