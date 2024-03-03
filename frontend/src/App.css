@@ -1,38 +1,94 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #f9f9f9; /* Cyan color */
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+.content {
+  color: 50C878;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo {
+  width: 200px;
+  height: auto; 
+  margin-bottom: 20px; 
+}
+
+.box {
+  width: 300px;
+  padding: 75px;
+  position: absolute;
+  top: 30%;
+  left: 37.5%;
+  transform: translate (-50%, -50%);
+  background: #f9f9f9;
+  text-align: center;
+  border: 2px solid #39522c;
+
+}
+.box h1 {
+
+    color: #39522c;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.box input[type = "username"], .box input[type = "password"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: black;
+  border-radius: 24px;
+  transition: 0.25s;
+  border: 2px solid #39522c;
+
+
+}
+.box input[type = "submit"] {
+  border: 0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2eec71;
+  padding: 14px 40px;
+  width: 200px;
+  outline: none;
+  color: black;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+
+}
+
+.box input[type = "submit"]:hover {
+  background: #2ecc71
+}
+
+
+#about-link {
+  
+  color: blue; 
+  text-decoration: underline; 
+  font-weight: bold;
+  font-size: 36px;
+  margin-top: 10px; 
+  position: absolute; /* Position the link absolutely */
+  bottom: 135px; /* Position the link 15 pixels from the bottom */
+  left: 900px; /* Position the link 50 pixels from the left */
+  text-align: center;
+  
+}
+
+#about-text {
+  margin-top: 700px;
+  font-size: 24px;
+  text-align: center;
 }
