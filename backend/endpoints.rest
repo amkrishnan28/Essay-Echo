@@ -38,3 +38,23 @@ Content-Type: application/json
     "prompt": "What is your greatest weakness?",
     "college": "UCLA"
 }
+
+### Delete Prompt based on Content
+DELETE /user/remove-prompt HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "promptContent": "What is your greatest strength?",
+    "username": "pravirsecond"
+}
+
+### Delete Prompt based on ID
+POST /user/delete-prompt HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "promptId": "65e4dc8958cab223b6a4cf2b",
+    "username": "pravirsecond"
+}
