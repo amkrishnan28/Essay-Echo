@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Landing.css';
+import { useSearchParams } from 'react-router-dom';
 import myImage from './logo1.jpeg';
 
 import '../App.css'; // Import your CSS file for styling
@@ -8,14 +9,78 @@ import axios from 'axios';
 
 function LandingPage() {
 
+    const [prompts, setPrompts] = useState([]);
+    const [colleges, setColleges] = useState([]);
+
+    let [searchParams] = useSearchParams();
+
+    const username = searchParams.get('username');
+
+    useEffect(() => {
+        const fetchPrompts = async () => {
+            try {
+                console.log("testing here");
+                const response = await axios.post(`http://localhost:8000/user/prompts`, {
+                    username: username
+                });
+                setPrompts(response.data);
+            } catch (error) {
+                console.error("Error fetching prompts:", error);
+            }
+        };
+
+        if (username) {
+            fetchPrompts();
+        }
+    }, [username]);
+
     const similarPromptsClick = async () => {
         try {
-            const response = await axios.post("http://localhost:8000/get-similar-prompts");
+            const response = await axios.post("http://localhost:8000/get-similar-prompts", {prompts});
+            console.log("Hello")
             console.log(response.data.message);
+            console.log(response.data)
+            
+            document.getElementById('recommendations').innerHTML = response.data.message;
+
         } catch (error) {
             console.error("Error fetching similar prompts:", error);
         }
     }
+
+    const handleSubmitClick = async (e) => {
+        alert("CLICKED");
+
+        e.preventDefault(); // Prevent default form submission
+    
+       
+        const form_prompt = document.getElementById("prompt")
+        const form_college = document.getElementById("college")
+    
+        console.log(form_prompt.value);
+        console.log(form_college.value);
+    
+        // let newPrompts = prompts;
+        // newPrompts.push(form_prompt.value);
+        // setPrompts(newPrompts);
+
+        // let newColleges = colleges;
+        // newColleges.push(form_college.value);
+        // setColleges(newColleges);
+        console.log("hope for the best! when adding");
+        try {
+            const response = await axios.post("http://localhost:8000/user/add-prompt", {
+                prompt: form_prompt.value, 
+                college: form_college.value, 
+                username: username
+            });
+            console.log("New Prompt Added!", response.data);
+        } catch (error) {
+            console.log("ERROR", error.response.data);
+        }
+        
+        
+      };
 
   return (
     <div className="landing-page">
@@ -43,20 +108,33 @@ function LandingPage() {
       </section>
     
       <div className="centered-form">
-          <form>
+          <form onSubmit={handleSubmitClick}>
               <div>
                   <label htmlFor="Prompt">Prompt:  </label>
-                  <input type="text" id="Prompt" name="Prompt" placeholder="Enter Prompt:" required />
+                  <input type="text" id="prompt" name="Prompt" placeholder="Enter Prompt:" required />
               </div>  
               <div>
                   <label htmlFor="College">College:  </label>
-                  <input type="text" id="College" name="College" placeholder="Enter College:" required />
+                  <input type="text" id="college" name="College" placeholder="Enter College:" required />
               </div>
               <input type="submit" value="Submit" />
           </form>
       </div>
+
+      <ul>
+            {prompts.map((prompt, index) => (
+                <li key={index}>{prompt.prompt} - {prompt.college}</li>
+            ))}
+        </ul>
       
-      <button className="submit-button" onClick={similarPromptsClick}>Submit Your Prompts</button>
+        <div style={{display: "flex", flexDirection: "column",justifyContent: "center"}}>
+            <button className="submit-button" onClick={similarPromptsClick}>Get Personalized Recommendations - courtesy of GPT-4</button>
+        </div>
+
+        <h2>Best Prompts to Tackle! In this order, these prompts are similar and can be tackled almost simultaneously!</h2>
+
+        <p id="recommendations"></p>
+
       
       <footer>
         <nav>

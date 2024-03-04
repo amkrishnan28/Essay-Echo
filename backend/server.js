@@ -220,11 +220,33 @@ app.delete('/user/remove-prompt', async (req, res) => {
 // GPT.JS
 
 app.post('/get-similar-prompts', async (req, res) => {
+    const { prompts } = req.body;
+    let stringPrompts = prompts.map(item => item.prompt).join('\n');
+    console.log("prompts")
+    console.log(stringPrompts)
+
     try {
-        const result = await main();
+        const result = await main(stringPrompts);
+        console.log("Hey!")
+        console.log(result);
         res.json({ message: result });
     } catch (error) {
         console.error(error);
         res.status(500).send("An error occurred on the server.");
+    }
+});
+
+
+app.post('/user/prompts', async (req, res) => {
+    const { username } = req.body;
+    console.log(username);
+    try {
+        console.log("testing getting the right prompts")
+        const prompts = await Prompt.find({ username: username });
+        console.log(prompts);
+        res.json(prompts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred while fetching the prompts.");
     }
 });
