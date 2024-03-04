@@ -39,22 +39,39 @@ connect();
 
 
 app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
 
     try {
-        console.log(req.body.username);
-        let username = req.body.username;
-        const tempUser = await User.findOne({username: req.body.username});
-        if(!tempUser){
-            User.create(req.body);
+        const user = await User.findOne({ username: username });
+
+        console.log(user);
+
+        if (user) {
+            if (user.password === password) {
+            
+                res.status(200).send({ message: "Login successful", username: username });
+            } /* 
+                else {
+
+                res.status(401).send({ message: "Invalid username or password" });
+                }
+            */
+        } else {
+
+            res.status(401).send({ message: "Invalid username or password" });
         }
-
-        res.send({accessToken: username});
-
-    }
-    catch(err){
-        console.log(err);
+        
+        // else {
+       
+        //     const newUser = await User.create({ username, password, username, });
+        //     res.status(201).send({ message: "User created", username: username });
+        // }
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ message: "Server error" });
     }
 });
+
 
 app.post('/add-user', async (req,res)=>{
     User.create(req.body)
@@ -80,13 +97,25 @@ app.get('/get-users', async (req, res) => {
 });
 
 app.post('/get-user', async(req, res) => {
-    const userFound = await User.findOne({username: req.body.username});
-    if(userFound){
-        res.send(userFound);
+    console.log("Requested username:", req.body.username);
+
+    try {
+        const userFound = await User.findOne({ username: req.body.username });
+
+        console.log("FindOne result:", userFound);
+
+        if (userFound) {
+            console.log("User Found!");
+            res.send(userFound);
+        } else {
+            console.log('User not found');
+            res.status(404).send("User Not Found");
+        }
+    } catch (error) {
+        console.error('Error searching for user:', error);
+        res.status(500).send("An error occurred while searching for the user");
     }
-    else{
-        console.log('User not found');
-    }
+    
 });
 
 app.delete('/delete-users', async (req,res) =>{
