@@ -8,7 +8,7 @@ Host: localhost:8000
 Content-Type: application/json
 
 {
-    "username": "pravirsecond"
+    "username": "pravirs4"
 }
 
 
@@ -57,4 +57,14 @@ Content-Type: application/json
 {
     "promptId": "65e4dc8958cab223b6a4cf2b",
     "username": "pravirsecond"
+}
+
+### Login User with Username and Password
+POST /login HTTP/1.1
+Host: localhost:8000
+Content-Type: application/json
+
+{
+    "username": "pravirs4",
+    "password": "fakepwd"
 }
