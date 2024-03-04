@@ -6,13 +6,13 @@
     margin-right: 50px; /* Adjust margin-right for upper-right container */
 }
 
-#username {
+/* #username {
     position: absolute;
     top: 0;
     right: 0;
     margin-top: 20px;
-    margin-right: 20px; /* Adjust margin-right for the username */
-}
+    margin-right: 20px;  Adjust margin-right for the username 
+} */
 
 .upper-left {
     position: absolute;

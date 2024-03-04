@@ -12,12 +12,11 @@
 .logo {
   width: 200px;
   height: auto; 
-  margin-bottom: 20px; 
+  /* margin-bottom: 20px;  */
 }
 
 .box {
   width: 300px;
-  height: 300px;
   padding: 75px;
   position: absolute;
   top: 30%;
@@ -40,7 +39,7 @@
 .box input[type = "username"], .box input[type = "password"] {
   border: 0;
   background: none;
-  display: block;
+  display: block; 
   margin: 20px auto;
   text-align: center;
   padding: 20px 10px;
@@ -77,20 +76,20 @@
 
 #about-link {
   
-  color: blue; 
-  text-decoration: underline; 
+  color: rgb(103, 167, 140); 
+  /* text-decoration: underline;  */
   font-weight: bold;
   font-size: 36px;
-  margin-top: 10px; 
-  position: absolute; /* Position the link absolutely */
-  bottom: 135px; /* Position the link 15 pixels from the bottom */
-  left: 900px; /* Position the link 50 pixels from the left */
-  text-align: center;
+  /* margin-top: 10px;  */
+  /* position: absolute; Position the link absolutely
+  bottom: 135px; Position the link 15 pixels from the bottom
+  left: 900px; Position the link 50 pixels from the left
+  text-align: center; */
   
 }
 
 #about-text {
-  margin-top: 700px;
+  /* margin-top: 700px; */
   font-size: 24px;
   text-align: center;
 }

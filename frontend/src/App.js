@@ -100,18 +100,27 @@ function App() {
 
   
   return (
+    <>
     <div className="App">
       <section className="App-content">
         <div className="content">
+        
+        <div style={{display: "flex", flexDirection: "row", alignItems: "space-between", justifyContent: "space-between"}}> 
           <img src={myImage} alt="My Image" className="logo" />
+          <button onClick={() => setShowAbout(!showAbout)} id="about-link">About Us</button>
+        </div>
           <div className="login-form">
             <form className = "box" method = "post" id="form" onSubmit={handleLogin}>
+           
+             
               <h1> Login/Create Account </h1>
-              <input type = "username" name = "username" id="username" placeholder = "Username"></input>
-              <input type = "password" name = "password" id="password" placeholder = "Password"></input>
-              <div style={{display: "flex", flexDirection: "row"}}>
-                <input type = "submit" name = "loginButton" id="login" placeholder = "Login/Create Account" value="Log In"></input>
-              </div>
+                
+                <input type = "username" name = "inputUsername" id="username" placeholder = "Username"></input>
+
+                <input type = "password" name = "inputPassword" id="password" placeholder = "Password"></input>
+             
+              <input type = "submit" name = "loginButton" id="login" placeholder = "Login/Create Account"></input>
+            
               
 
             </form>
@@ -120,14 +129,18 @@ function App() {
           
         </div>
 
-        {showAbout && 
-          <About></About>
-        }
+        
 
       </section>
-    
+      
       
     </div>
+    {showAbout && 
+      <a target='_blank'>
+        <About></About>
+      </a>
+    }
+    </>
   );
 }
 
