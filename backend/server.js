@@ -15,6 +15,8 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(express.json({ extended: false }));
 app.use(express.urlencoded({ extended: true }));
 
+const { main } = require('./gpt.js');
+
 const uri = 'mongodb+srv://pravir:WKvJ3k0eiHTfKZmx@maincluster.wmp8a5t.mongodb.net/?retryWrites=true&w=majority';
 
 const conn = mongoose.createConnection(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -211,5 +213,18 @@ app.delete('/user/remove-prompt', async (req, res) => {
         res.status(200).json({ message: 'Prompt deleted successfully', user: updatedUser });
     } catch (error) {
         res.status(500).json({ message: 'Error deleting prompt from database', error: error.message });
+    }
+});
+
+
+// GPT.JS
+
+app.post('/get-similar-prompts', async (req, res) => {
+    try {
+        const result = await main();
+        res.json({ message: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred on the server.");
     }
 });
