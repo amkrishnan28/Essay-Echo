@@ -1,0 +1,42 @@
+.upper-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 20px;
+    margin-right: 50px; /* Adjust margin-right for upper-right container */
+}
+
+#username {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 20px;
+    margin-right: 20px; /* Adjust margin-right for the username */
+}
+
+.upper-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+    margin-left: 20px; /* Adjust margin-left for the image */
+}
+
+.centered-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 330px;
+    font-size: 26px;
+}
+
+input[type="text"] {
+    width: 300px;
+    margin-top: 20px; /* Add margin-top for spacing between inputs */
+}
+input[type="submit"] {
+    width: 150px; 
+    height: 50px;
+    font-size: 1.2em; 
+    margin-top: 20px;
+}

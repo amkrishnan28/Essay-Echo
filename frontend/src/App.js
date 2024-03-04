@@ -25,11 +25,12 @@ function App() {
         <div className="content">
           <img src={myImage} alt="My Image" className="logo" />
           <div className="login-form">
-            <form class = "box" method = "post" onSubmit={handleLogin}>
+             <form class = "box" method = "post" onSubmit={handleLogin}>
               <h1> Login/Create Account </h1>
-              <input type = "username" name = "inputUsername" id="username" placeholder = "Username"></input>
-              <input type = "password" name = "inputPassword" id="password" placeholder = "Password"></input>
-              <input type = "submit" name = "loginButton" id="login" placeholder = "Login/Create Account"></input>
+              <input type = "username" name = "" placeholder = "Username"></input>
+              <input type = "password" name = "" placeholder = "Password" maxlength = "15"></input>
+
+              <input type = "submit" name = "loginButton" id="login" placeholder = "Login/Create Account" value = "Login/Create Account"></input>
 
             </form>
           </div>
