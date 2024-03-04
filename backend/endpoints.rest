@@ -55,8 +55,8 @@ Host: localhost:8000
 Content-Type: application/json
 
 {
-    "promptId": "65e4dc8958cab223b6a4cf2b",
-    "username": "pravirsecond"
+    "promptId": "65e538a34fa08f08c73b458e",
+    "username": "pravirs4"
 }
 
 ### Login User with Username and Password
