@@ -1,7 +1,19 @@
 import React from 'react';
 import '../App.css'; // Import your CSS file for styling
 
+import axios from 'axios';
+
 function LandingPage() {
+
+    const similarPromptsClick = async () => {
+        try {
+            const response = await axios.post("http://localhost:8000/get-similar-prompts");
+            console.log(response.data.message);
+        } catch (error) {
+            console.error("Error fetching similar prompts:", error);
+        }
+    }
+
   return (
     <div className="landing-page">
         
@@ -27,7 +39,7 @@ function LandingPage() {
         </ul>
       </section>
       
-      <button className="submit-button">Submit Your Prompts</button>
+      <button className="submit-button" onClick={similarPromptsClick}>Submit Your Prompts</button>
       
       <footer>
         <nav>
