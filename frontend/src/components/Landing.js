@@ -4,6 +4,7 @@ import '../App.css'; // Import your CSS file for styling
 function LandingPage() {
   return (
     <div className="landing-page">
+        
       <header>
         <img src="banner-image.jpg" alt="EssayMatch Banner" />
         <h1>EssayMatch: Your College and Scholarship Essay Companion</h1>
