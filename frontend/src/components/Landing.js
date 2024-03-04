@@ -1,4 +1,7 @@
 import React from 'react';
+import './Landing.css';
+import myImage from './logo1.jpeg';
+
 import '../App.css'; // Import your CSS file for styling
 
 import axios from 'axios';
@@ -38,6 +41,20 @@ function LandingPage() {
           <li>Community and Support</li>
         </ul>
       </section>
+    
+      <div className="centered-form">
+          <form>
+              <div>
+                  <label htmlFor="Prompt">Prompt:  </label>
+                  <input type="text" id="Prompt" name="Prompt" placeholder="Enter Prompt:" required />
+              </div>  
+              <div>
+                  <label htmlFor="College">College:  </label>
+                  <input type="text" id="College" name="College" placeholder="Enter College:" required />
+              </div>
+              <input type="submit" value="Submit" />
+          </form>
+      </div>
       
       <button className="submit-button" onClick={similarPromptsClick}>Submit Your Prompts</button>
       

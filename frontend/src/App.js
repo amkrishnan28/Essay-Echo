@@ -113,6 +113,7 @@ function App() {
                 <input type = "submit" name = "loginButton" id="login" placeholder = "Login/Create Account" value="Log In"></input>
               </div>
               
+
             </form>
           </div>
           {/* <button onClick={() => setShowAbout(!showAbout)} id="about-link">About Us</button> */}
